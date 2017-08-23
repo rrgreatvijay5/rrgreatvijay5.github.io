@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function hidediv()
+{
+	document.getElementById("demo").style.display='none';
+        document.getElementById("contt").style.display='block';
+        document.getElementById("button").style.display='none';
+}
+</script>
+<style>
+    body {
+  margin: 0;
+  padding: 0;
+/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* The only rule that matters */
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+/* These just style the content */
+article {
+/*  just a fancy border  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  margin: 10px;
+}
+
+h1 {
+  font-size: 100px;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: cursive;
+  text-align: center;
+}
+
+h1 span {
+  font-family: sans-serif;
+  letter-spacing: 0;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1 span a {
+  color: #fff;
+}
+h2 {
+  text-align: center;
+  font-size: 60px;
+}
+div.relative {
+    position: relative;
+	top: 300px;
+}
+</style>
+</head>
+<body>
+    
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+<!--  Content  -->
+<article>
+  <h1 id="demo"></h1>
+  <!--<center><div id="button" style="display: none"><input type="button" name="enter" id="enter" value="Click" onclick="hidediv()"/></div></center>-->
+  <center><div id="button" style="display: none"><button class="btn btn-success btn-lg" type="button" name="enter" id="enter" onclick="hidediv()">Click</button></div></center>
+  <div class="container" style="display: none; position: relative; width: 100%; height: 100%;" id="contt">
+      
+    <iframe style="height: 100%; width: 100%;" class="embed-responsive-item" src="https://www.youtube.com/embed/z6nfK_zhYNk"></iframe>
+      
+  
+</div>
+</article>
+  
+<!--  Video is muted & autoplays, placed after major DOM elements for performance & has an image fallback  -->
+<video autoplay loop id="video-background" muted plays-inline poster="../Perfect_Hour.jpg">
+    <source src="../Perfect_Hour.mp4" type="video/mp4">
+</video>
+
+<!--<h2 id="demo"></h2>
+<center><div id="button" style="display: none"><input type="button" name="enter" id="enter" value="Click" onclick="hidediv()"/></div></center>
+-->
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Aug 23, 2017 21:02:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d:" + hours + "h:"
+    + minutes + "m:" + seconds + "s";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Time is up!!";
+        document.getElementById("button").style.display ='block';
+    }
+}, 1000);
+</script>
+
+
+<script>
+$(document).ready(function(){
+    // Activate Carousel
+    $("#myCarousel").carousel({interval: false});
+    
+    // Enable Carousel Indicators
+    $(".item1").click(function(){
+        $("#myCarousel").carousel(0);
+    });
+    $(".item2").click(function(){
+        $("#myCarousel").carousel(1);
+    });
+    $(".item3").click(function(){
+        $("#myCarousel").carousel(2);
+    });
+    $(".item4").click(function(){
+        $("#myCarousel").carousel(3);
+    });
+    
+    // Enable Carousel Controls
+    $(".left").click(function(){
+        $("#myCarousel").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#myCarousel").carousel("next");
+    });
+});
+</script>
+</body>
+</html>
